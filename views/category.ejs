@@ -1,0 +1,85 @@
+<%- include('header') %>
+    <%- include('aside') %>
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    <i class="fa fa-th"></i>
+                    <%= title %>
+                </h1>
+            </section>
+            <!-- Main content -->
+            <section class="content">
+                <!-- Default box -->
+                <div class="box">
+                    <div class="box-body">
+
+                        <form action="" method="get" class="form-inline" role="form">
+
+                            <div class="form-group">
+
+                                <input class="form-control" name="name" placeholder="Nhập tên danh mục">
+                            </div>
+
+
+                            <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                            <a href="/them-danh-muc" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Thêm
+                                mới</a>
+                        </form>
+                        <hr>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>STT</th>
+                                    <th>Danh Mục</th>
+                                    <th>Trạng Thái</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% data.map(function(cat, index){%>
+                                    <tr>
+                                        <td scope="row">
+                                            <%= index + 1 %>
+                                        </td>
+                                        <td scope="row">
+                                            <%= cat.name %>
+                                        </td>
+                                        <td scope="row">
+                                            <%= cat.Status==0 ? 'Tạm ẩn' : 'Hiển thị' %>
+                                        </td>
+                                        <td class="text-right">
+                                            <a href="/sua-danh-muc/<%= cat.id %>" class="btn btn-sm btn-primary"><i
+                                                    class="fa fa-edit"></i> Sửa</a>
+                                            <a href="/xoa-danh-muc/<%= cat.id %>" class="btn btn-sm btn-danger"><i
+                                                    class="fa fa-trash"></i> Xoá</a>
+                                        </td>
+                                    </tr>
+                                    <% }) %>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer">
+
+                        <ul class="pagination">
+                            <li><a href="/danh-muc/?page=<%=_page > 1 ? _page-1 : 1 %>">&laquo;</a></li>
+                            <% for(i=1; i <=totalPage; i++){ %>
+                                <li class="<%= _page == i ? 'active' : ''%>"><a href="/danh-muc/?page=<%=i%>">
+                                        <%= i %>
+                                    </a></li>
+                                <%} %>
+                                    <li><a
+                                            href="/danh-muc/?page=<%=_page < totalPage? _page+1 : totalPage %>">&raquo;</a>
+                                    </li>
+                        </ul>
+
+                    </div>
+                </div>
+                <!-- /.box -->
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+        <%- include('footer') %>

@@ -1,0 +1,64 @@
+<%- include('header') %>
+    <%- include('aside') %>
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    <i class="fa fa-th"></i> Chỉnh Sửa Danh Mục
+                </h1>
+            </section>
+            <!-- Main content -->
+            <section class="content">
+                <!-- Default box -->
+                <div class="box">
+                    <div class="row">
+                        <div class="col-md-4">
+
+                            <form action="" method="POST" role="form">
+
+                                <div class="box-body">
+                                    <div class="form-group">
+                                        <label for="">Tên Danh Mục</label>
+                                        <input type="text" class="form-control" placeholder="Nhập tên sản phẩm"
+                                            name="name" value="<%= cat.name %>">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="">Trạng thái danh mục</label>
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" name="status" value="1" <%=cat.status==1 ? 'checked'
+                                                    : '' %>>
+                                                Hiển thị
+                                            </label>
+                                        </div>
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" name="status" value="0" <%=cat.status==0 ? 'checked'
+                                                    : '' %>>
+                                                Tạm ẩn
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="box-footer">
+                                    <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i>Lưu
+                                        Lại</button>
+                                    <a href="/danh-muc" class="btn btn-default pull-right"><i
+                                            class="fa fa-arrow-left"></i>Quay Lại</a>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box -->
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+        <%- include('footer') %>
